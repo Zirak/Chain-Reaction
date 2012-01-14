@@ -1,5 +1,4 @@
 m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D - t, O = 256, l = e = E = N = 0;
-
 setInterval(function () {
 	if (!E && (e >= N || (L && e < N && l--))) {
 		e = L = 0;
@@ -10,8 +9,8 @@ setInterval(function () {
 	a.fillStyle = e < N ? '#778' : '#eef';
 	a.fillRect(0, 0, D, D);
 	a.strokeText(e + '/' + N, 9, 9);
-	i = A.length;
 
+	i = A.length;
 	while (i--) {
 	with (A[i] || (A[i] = {
 		s : L,
@@ -28,15 +27,8 @@ setInterval(function () {
 			return o.s && P(r + o.r, 2) > P(x - o.x, 2) + P(y - o.y, 2) && (s = 1, E++, e++);
 		});
 		if (!s) {
-			x += v;
-			y += z;
-
-			if (x < r | x + r > D) {
-				v = -v;
-			}
-			if (y < r | y + r > D) {
-				z = -z;
-			}
+			x += v *= 1 - 2 * (x < r | x+r > D);
+			y += z *= 1 - 2 * (y < r | y+r > D);
 		} else if (!t) {
 			if (!--r) {
 				A.splice(i, 1);
@@ -58,6 +50,7 @@ setInterval(function () {
 }, 50);
 
 c.onclick = function(e) {
+
 	if (!L) {
 		L = e;
 		E++;
