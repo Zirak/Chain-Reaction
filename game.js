@@ -1,0 +1,66 @@
+m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D - t, O = 256, l = e = E = N = 0;
+
+setInterval(function () {
+	if (!E && (e >= N || (L && e < N && l--))) {
+		e = L = 0;
+		A = [];
+		A.length = ++l * 5;
+		N = l * (l + 1) / 2;
+	}
+	a.fillStyle = e < N ? '#778' : '#eef';
+	a.fillRect(0, 0, D, D);
+	a.strokeText(e + '/' + N, 9, 9);
+	i = A.length;
+
+	while (i--) {
+	with (A[i] || (A[i] = {
+		s : L,
+		M : R() * 40 + 20,
+		x : L ? L.clientX : R() * T + 6,
+		y : L ? L.clientY : R() * T + 6,
+		v : R() * t - 6,
+		z : R() * t - 6,
+		C : 'rgb(' + [R() * O | 0, R() * O | 0, R() * O | 0].join() + ')',
+		r : 6,
+		t : 30 / l | 0
+	})) {
+		!s && A.some(function(o) {
+			return o.s && P(r + o.r, 2) > P(x - o.x, 2) + P(y - o.y, 2) && (s = 1, E++, e++);
+		});
+		if (!s) {
+			x += v;
+			y += z;
+
+			if (x < r | x + r > D) {
+				v = -v;
+			}
+			if (y < r | y + r > D) {
+				z = -z;
+			}
+		} else if (!t) {
+			if (!--r) {
+				A.splice(i, 1);
+				E--;
+			}
+		} else if (s > 1) {
+			t--;
+		} else {
+			if (++r > M) {
+				s = 2;
+			}
+		}
+
+		a.beginPath();
+		a.fillStyle = C;
+		a.arc(x, y, r, 0, 7);
+		a.fill();
+	}};
+}, 50);
+
+c.onclick = function(e) {
+	if (!L) {
+		L = e;
+		E++;
+		A.push(0);
+	}
+};

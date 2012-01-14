@@ -1,0 +1,5 @@
+A simple chain reaction game code-golf.
+
+To play, simply click anywhere to create an exploding ball. Any ball caught in the explosion will also explode and so on. If you pass a certain quota, the background color will change and you'll advance a level!
+
+The current score / target score is written at the top-left of the board.
