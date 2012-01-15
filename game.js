@@ -1,25 +1,24 @@
-m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D - t, O = 256, l = e = E = N = 0;
+m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, T = D - 12, O = 256, l = e = E = N = 0;
 
 setInterval(function() {
 	if (!E && (e >= N || (L && e < N && l--))) {
 		e = L = 0;
-		Z = ++l * l;
 		A = [];
-		N = Z - l;
+		n = (N = ++l * (l + 1) / 2) + 5;
 	}
 	a.fillStyle = e < N ? '#a41' : '#c73';
 	a.fillRect(0, 0, D, D);
 	a.strokeText(e + '/' + N, 9, 9);
 
-	i = Z;
+	i = n;
 	while (--i) {
 		with (A[i] || (A[i] = {
 			s : L,
 			M : R() * 40 + 20,
 			x : L ? L.clientX : R() * T + 6,
 			y : L ? L.clientY : R() * T + 6,
-			v : R() * t - 6,
-			z : R() * t - 6,
+			v : R() * 12 - 6,
+			z : R() * 12 - 6,
 			C : 'rgb(' + [R() * O | 0, R() * O | 0, R() * O | 0] + ')',
 			r : 6,
 			t : 30 / l | 0
@@ -33,7 +32,7 @@ setInterval(function() {
 			} else if (!t) {
 				if (!--r) {
 					A.splice(i, 1);
-					Z--;
+					n--;
 					E--;
 				}
 			} else if (s > 1) {
@@ -52,5 +51,5 @@ setInterval(function() {
 }, 50);
 
 c.onclick = function(e) {
-	L || (L = e, E++, Z++);
+	L || (L = e, E++, n++);
 };
