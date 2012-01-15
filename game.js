@@ -3,16 +3,16 @@ m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D -
 setInterval(function() {
 	if (!E && (e >= N || (L && e < N && l--))) {
 		e = L = 0;
-		Z = ++l * 5;
+		Z = ++l * l;
 		A = [];
-		N = l * (l + 1) / 2;
+		N = Z - l;
 	}
 	a.fillStyle = e < N ? '#a41' : '#c73';
 	a.fillRect(0, 0, D, D);
 	a.strokeText(e + '/' + N, 9, 9);
 
 	i = Z;
-	while (i--) {
+	while (--i) {
 		with (A[i] || (A[i] = {
 			s : L,
 			M : R() * 40 + 20,
