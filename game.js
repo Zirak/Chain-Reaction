@@ -3,8 +3,7 @@ m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D -
 setInterval(function() {
 	if (!E && (e >= N || (L && e < N && l--))) {
 		e = L = 0;
-		A = [];
-		A.length = ++l * 5;
+		A = Array(++l * 5);
 		N = l * (l + 1) / 2;
 	}
 	a.fillStyle = e < N ? '#a41' : '#c73';
