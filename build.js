@@ -23,11 +23,19 @@ var compile = function ( params ) {
 		resp.on( 'data', function ( body ) {
 
 			var res = JSON.parse( body.toString() ),
-			code = res.compiledCode.replace( /[\n\r]/g, '');
+			code = lastChanges( res.compiledCode );
 
 			console.log( 'Saving compressed code...\n' );
 			fs.writeFile( compressedName, code, saveEnd );
 		});
+	}
+
+	function lastChanges ( code ) {
+		return code
+		//replace the setInterval function with a string
+			.replace( /function\(\)\s*\{([\s\S]+)\}+,(\d+)/, '\'$1\',$2' )
+		//remove any remaining new-line characters
+			.replace( /[\n\r]/g, '' );
 	}
 
 	function saveEnd ( err ) {

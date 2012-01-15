@@ -1,5 +1,5 @@
 m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D - t, O = 256, l = e = E = N = 0;
-setInterval(function () {
+setInterval(function() {
 	if (!E && (e >= N || (L && e < N && l--))) {
 		e = L = 0;
 		A = [];
@@ -50,7 +50,6 @@ setInterval(function () {
 }, 50);
 
 c.onclick = function(e) {
-
 	if (!L) {
 		L = e;
 		E++;
