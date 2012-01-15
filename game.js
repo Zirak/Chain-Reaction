@@ -1,4 +1,4 @@
-m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D - t, O = 361, l = e = E = N = 0;
+m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D - t, O = 256, l = e = E = N = 0;
 
 setInterval(function() {
 	if (!E && (e >= N || (L && e < N && l--))) {
@@ -20,7 +20,7 @@ setInterval(function() {
 		y : L ? L.clientY : R() * T + 6,
 		v : R() * t - 6,
 		z : R() * t - 6,
-		C : 'hsl(' + R() * O + ',' + [R() * 100 + '%', 50] + '%)',
+		C : 'rgb(' + [R() * O | 0, R() * O | 0, R() * O | 0] + ')',
 		r : 6,
 		t : 30 / l | 0
 	})) {
