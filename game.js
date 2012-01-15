@@ -1,4 +1,5 @@
 m = Math, R = m.random, P = m.pow, D = c.width = c.height = 600, t = 12, T = D - t, O = 256, l = e = E = N = 0;
+
 setInterval(function() {
 	if (!E && (e >= N || (L && e < N && l--))) {
 		e = L = 0;
@@ -6,7 +7,7 @@ setInterval(function() {
 		A.length = ++l * 5;
 		N = l * (l + 1) / 2;
 	}
-	a.fillStyle = e < N ? '#778' : '#eef';
+	a.fillStyle = e < N ? '#a41' : '#c73';
 	a.fillRect(0, 0, D, D);
 	a.strokeText(e + '/' + N, 9, 9);
 
@@ -23,10 +24,10 @@ setInterval(function() {
 		r : 6,
 		t : 30 / l | 0
 	})) {
-		!s && A.some(function(o) {
-			return o.s && P(r + o.r, 2) > P(x - o.x, 2) + P(y - o.y, 2) && (s = 1, E++, e++);
-		});
 		if (!s) {
+			A.some(function(o) {
+				return o.s && P(r + o.r, 2) > P(x - o.x, 2) + P(y - o.y, 2) && (s = 1, E++, e++);
+			});
 			x += v *= 1 - 2 * (x < r | x+r > D);
 			y += z *= 1 - 2 * (y < r | y+r > D);
 		} else if (!t) {
@@ -50,9 +51,5 @@ setInterval(function() {
 }, 50);
 
 c.onclick = function(e) {
-	if (!L) {
-		L = e;
-		E++;
-		A.push(0);
-	}
+	L || (L = e, E++, A.push(0));
 };
