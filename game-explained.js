@@ -3,10 +3,9 @@ m = Math, R = m.random, P = m.pow,
 //set the canvas dimensions and store them
 D = c.width = c.height = 600,
 //constants:
-// t = 6 * 2, used in the ball dx and dy generation
 // T = 600 - 12, used in ball coords generation
 // O = max rgb value, used in ball color generation
-t = 12, T = D - t, O = 256,
+T = D - 12, O = 256,
 //the srsbsns variables:
 // l = level
 // e = overall exploded count in level
@@ -18,7 +17,7 @@ l = e = E = N = 0;
 // A = an array of all balls in the level
 // L = whether a user clicked in the level. this isn't a real boolean value,
 //  but a falsy/truthy representation. the truthy value with be a MouseEvent
-// Z = number of balls in level counter
+// n = number of balls present in level
 
 //main loop
 //will be turned into setInterval( string ) in the build script to weed off extra bytes
@@ -33,12 +32,11 @@ setInterval(function() {
 		e = L = 0;
 		A = [];
 
-		//set the number of balls in the level to level^2
-		Z = ++l * l;
-		//set the target of the level
-		N = Z - 3 * l;
-		//tbh, I'm unhappy with the two formulas above. it either gets too hard
-		// too soon, or too easy too fast
+		//requirement and ball-count generation
+		n = (N = ++l * (l + 1) / 2) + 5;
+		//the requirement is the level-th traingular number
+		//the ball-count is the requirement + 5
+		//linear, I know, but it's the best I found. not too hard too fast, not too easy too soon.
 	}
 	//clear the board. if the user won, make it a festive color!
 	a.fillStyle = e < N ? '#a41' : '#c73';
@@ -63,9 +61,9 @@ setInterval(function() {
 			//what he ^ said
 			y : L ? L.clientY : R() * T + 6,
 			//-3 <= dx <= 3
-			v : R() * t - 6,
+			v : R() * 12 - 6,
 			//-3 <= dy <= 3
-			z : R() * t - 6,
+			z : R() * 12 - 6,
 			//random rgb color
 			C : 'rgb(' + [R() * O | 0, R() * O | 0, R() * O | 0] + ')',
 			//start radius
