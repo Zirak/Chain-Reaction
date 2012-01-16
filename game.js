@@ -11,7 +11,7 @@ setInterval(function() {
 	a.strokeText(e + '/' + N, 9, 9);
 
 	i = n;
-	while (--i) {
+	while (i--) {
 		with (A[i] || (A[i] = {
 			s : L,
 			M : R() * 40 + 20,
